@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function EscolhaComidas() {
   const docesBase = [
@@ -16,12 +17,23 @@ function EscolhaComidas() {
   const doces = [...docesBase, 'Outros (especifique)'];
   const salgados = [...salgadosBase, 'Outros (especifique)'];
 
-  const [nome, setNome] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const nomeInicial = location.state?.nome || ''; // nome vindo da página anterior
+
+  const [nome, setNome] = useState(nomeInicial);
   const [selecionadosDoces, setSelecionadosDoces] = useState([]);
   const [selecionadosSalgados, setSelecionadosSalgados] = useState([]);
   const [outroDoce, setOutroDoce] = useState('');
   const [outroSalgado, setOutroSalgado] = useState('');
   const [enviado, setEnviado] = useState(false);
+
+  useEffect(() => {
+    if (!nomeInicial) {
+      // Se não recebeu nome, redireciona para a Home
+      navigate('/');
+    }
+  }, [nomeInicial, navigate]);
 
   const handleSelecao = (item, categoria) => {
     const selecionados = categoria === 'doce' ? selecionadosDoces : selecionadosSalgados;
@@ -37,11 +49,6 @@ function EscolhaComidas() {
   };
 
   const handleSubmit = () => {
-    if (nome.trim() === '') {
-      alert('Por favor, insira seu nome.');
-      return;
-    }
-
     const docesFinal = selecionadosDoces.includes('Outros (especifique)')
       ? [...selecionadosDoces.filter((d) => d !== 'Outros (especifique)'), outroDoce]
       : selecionadosDoces;
@@ -76,7 +83,7 @@ function EscolhaComidas() {
   };
 
   if (enviado) {
-    return <div className="container"><h3>🎉 Obrigado {nome}, suas escolhas foram registradas!</h3></div>;
+    return <div className="container"><h3>🎉 Obrigado {nome}, Juleba agradece 🙏🏻🐈‍⬛ !</h3></div>;
   }
 
   return (
@@ -84,29 +91,32 @@ function EscolhaComidas() {
       <h2>Escolha seus doces e salgados</h2>
       <p>Você poderá selecionar até 5 de cada categoria.</p>
 
-      <label>
-        Nome:
-        <input
-          type="text"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          placeholder="Digite seu nome"
-        />
-      </label>
+      {/* Só mostra o campo de nome se ele não veio da tela anterior */}
+      {!nomeInicial && (
+        <label>
+          Nome:
+          <input
+            type="text"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            placeholder="Digite seu nome"
+          />
+        </label>
+      )}
 
       <h3>Doces</h3>
-        <div className="opcoes-lista">
+      <div className="opcoes-lista">
         {doces.map((doce) => (
-            <label key={doce} className="opcao-item">
+          <label key={doce} className="opcao-item">
             <input
-                type="checkbox"
-                checked={selecionadosDoces.includes(doce)}
-                onChange={() => handleSelecao(doce, 'doce')}
+              type="checkbox"
+              checked={selecionadosDoces.includes(doce)}
+              onChange={() => handleSelecao(doce, 'doce')}
             />
             <span>{doce}</span>
-            </label>
+          </label>
         ))}
-        </div>
+      </div>
       {selecionadosDoces.includes('Outros (especifique)') && (
         <input
           type="text"

@@ -1,20 +1,32 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const [showContent, setShowContent] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleConfirmarClick = () => {
+    navigate('/confirmacao');
+  };
+
   return (
-    <div className="container">
-      <h1>🎉 Bem-vindo à Festa Junina!</h1>
-      <p>Confirme sua presença e escolha seus quitutes favoritos!</p>
-
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-        <Link to="/confirmacao">
-          <button>Confirmar Presença</button>
-        </Link>
-
-        <Link to="/comidas">
-          <button>Escolher Comidas</button>
-        </Link>
-      </div>
+    <div className="container" style={{ textAlign: 'center' }}>
+      {showContent ? (
+        <>
+          <h1>🎉 Bem-vindo à Festa Junina!</h1>
+          <p>Confirme sua presença para continuar</p>
+          <button onClick={handleConfirmarClick}>Confirmar Presença</button>
+        </>
+      ) : (
+        <p>Carregando...</p>
+      )}
     </div>
   );
 }
