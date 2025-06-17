@@ -1,3 +1,4 @@
+/* App.css */
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +9,16 @@ body {
 h1, h2, h3 {
   color: #d32f2f;
   text-align: center;
+  margin-bottom: 1rem;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: rgba(255, 255, 255, 0.65);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 button {
@@ -16,7 +27,7 @@ button {
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
-  margin-top: 10px;
+  margin: 10px 5px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
@@ -29,7 +40,25 @@ button:hover {
 input[type="text"], input[type="checkbox"] {
   margin-top: 8px;
   margin-bottom: 8px;
-  padding: 6px;
+  padding: 8px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  button {
+    width: 100%;
+  }
 }

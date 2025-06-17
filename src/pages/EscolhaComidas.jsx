@@ -76,11 +76,11 @@ function EscolhaComidas() {
   };
 
   if (enviado) {
-    return <h3>🎉 Obrigado {nome}, suas escolhas foram registradas!</h3>;
+    return <div className="container"><h3>🎉 Obrigado {nome}, suas escolhas foram registradas!</h3></div>;
   }
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="container">
       <h2>Escolha seus doces e salgados</h2>
       <p>Você poderá selecionar até 5 de cada categoria.</p>
 
@@ -91,7 +91,6 @@ function EscolhaComidas() {
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           placeholder="Digite seu nome"
-          style={{ marginLeft: '10px' }}
         />
       </label>
 
@@ -104,7 +103,6 @@ function EscolhaComidas() {
             onChange={() => handleSelecao(doce, 'doce')}
           />
           {doce}
-          <br />
         </label>
       ))}
       {selecionadosDoces.includes('Outros (especifique)') && (
@@ -113,7 +111,6 @@ function EscolhaComidas() {
           placeholder="Digite outro doce"
           value={outroDoce}
           onChange={(e) => setOutroDoce(e.target.value)}
-          style={{ margin: '10px 0', padding: '5px' }}
         />
       )}
 
@@ -126,7 +123,6 @@ function EscolhaComidas() {
             onChange={() => handleSelecao(salgado, 'salgado')}
           />
           {salgado}
-          <br />
         </label>
       ))}
       {selecionadosSalgados.includes('Outros (especifique)') && (
@@ -135,11 +131,9 @@ function EscolhaComidas() {
           placeholder="Digite outro salgado"
           value={outroSalgado}
           onChange={(e) => setOutroSalgado(e.target.value)}
-          style={{ margin: '10px 0', padding: '5px' }}
         />
       )}
 
-      <br />
       <button onClick={handleSubmit}>Enviar escolhas</button>
     </div>
   );

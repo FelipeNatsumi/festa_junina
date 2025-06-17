@@ -6,18 +6,15 @@ function Confirmacao() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (nome.trim() === '') {
       alert('Por favor, insira seu nome.');
       return;
     }
-
-    // Aqui no futuro vamos salvar no banco de dados ou enviar para backend
     setConfirmado(true);
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="container">
       <h2>✅ Confirmação de Presença</h2>
       {!confirmado ? (
         <form onSubmit={handleSubmit}>
@@ -28,10 +25,8 @@ function Confirmacao() {
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               placeholder="Digite seu nome"
-              style={{ marginLeft: '10px' }}
             />
           </label>
-          <br /><br />
           <button type="submit">Confirmar Presença</button>
         </form>
       ) : (
