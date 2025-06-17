@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff8e1;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #d32f2f;
+  text-align: center;
+}
+
+button {
+  background-color: #f57c00;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #e65100;
+}
+
+input[type="text"], input[type="checkbox"] {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
