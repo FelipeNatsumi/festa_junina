@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fff8e1;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Fredoka', cursive;
 }
 
 h1, h2, h3 {
@@ -61,4 +61,35 @@ label {
   button {
     width: 100%;
   }
+}
+
+/* Estilo para os grupos de opções de comida */
+.opcoes-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Estilo para cada item (doce ou salgado) */
+.opcao-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fffbea;
+  border: 1px solid #ffd966;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.opcao-item:hover {
+  background-color: #fff3c2;
+}
+
+.opcao-item input[type="checkbox"] {
+  width: auto;
+  transform: scale(1.2);
+  margin: 0;
 }

@@ -95,16 +95,18 @@ function EscolhaComidas() {
       </label>
 
       <h3>Doces</h3>
-      {doces.map((doce) => (
-        <label key={doce}>
-          <input
-            type="checkbox"
-            checked={selecionadosDoces.includes(doce)}
-            onChange={() => handleSelecao(doce, 'doce')}
-          />
-          {doce}
-        </label>
-      ))}
+        <div className="opcoes-lista">
+        {doces.map((doce) => (
+            <label key={doce} className="opcao-item">
+            <input
+                type="checkbox"
+                checked={selecionadosDoces.includes(doce)}
+                onChange={() => handleSelecao(doce, 'doce')}
+            />
+            <span>{doce}</span>
+            </label>
+        ))}
+        </div>
       {selecionadosDoces.includes('Outros (especifique)') && (
         <input
           type="text"
@@ -115,16 +117,18 @@ function EscolhaComidas() {
       )}
 
       <h3>Salgados</h3>
-      {salgados.map((salgado) => (
-        <label key={salgado}>
-          <input
-            type="checkbox"
-            checked={selecionadosSalgados.includes(salgado)}
-            onChange={() => handleSelecao(salgado, 'salgado')}
-          />
-          {salgado}
-        </label>
-      ))}
+        <div className="opcoes-lista">
+        {salgados.map((salgado) => (
+            <label key={salgado} className="opcao-item">
+            <input
+                type="checkbox"
+                checked={selecionadosSalgados.includes(salgado)}
+                onChange={() => handleSelecao(salgado, 'salgado')}
+            />
+            <span>{salgado}</span>
+            </label>
+        ))}
+        </div>
       {selecionadosSalgados.includes('Outros (especifique)') && (
         <input
           type="text"
