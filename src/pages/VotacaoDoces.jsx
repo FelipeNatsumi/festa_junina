@@ -6,7 +6,7 @@ function VotacaoDoces() {
     'Brigadeiro de milho','Bolo de aipim', 'Bolo de milho', 'Cocada', 'Pé de moleque', 'Queijadinha', 'Quindim',
   ].sort();
 
-  const doces = [...docesBase, 'Outros (especifique)'];
+  const doces = [...docesBase];
 
   const location = useLocation();
   const navigate = useNavigate();
