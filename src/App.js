@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Confirmacao from './pages/Confirmacao';
 import EscolhaComidas from './pages/EscolhaComidas';
+import VotacaoDoces from './pages/VotacaoDoces';
 import './App.css';
 import backgroundImage from './assets/background.jpeg';
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/confirmacao" element={<Confirmacao />} />
           <Route path="/comidas" element={<EscolhaComidas />} />
+          <Route path="/votacao-doces" element={<VotacaoDoces />} />
         </Routes>
       </Router>
     </div>
