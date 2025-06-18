@@ -45,7 +45,7 @@ function VotacaoDoces() {
       }
     };
 
-    fetch('https://sheetdb.io/api/v1/rs0tsfzsmxbdp/sheet=Doce 2', {
+    fetch('https://sheetdb.io/api/v1/rs0tsfzsmxbdp?sheet=Doce%202', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
